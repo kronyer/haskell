@@ -39,3 +39,23 @@ It is a recursive function, which means it calls itself with a different paramet
 > factorial :: Integer -> Integer
 > factorial n = if n == 0 then 1 --base case
 > else n * factorial (n-1) --recursive case
+
+Ex.4
+This function says that it expects two Booleans and return a Boolean
+It is a logical exclusive OR (XOR) function, which means it returns True if one of the parameters is True and the other is False, and False otherwise.
+
+> x0r :: Bool -> Bool -> Bool
+> x0r a b = (a || b) && not (a && b) 
+
+
+We can use patterns in the recursive factorial example to make it more readable and concise.
+
+> factorial' :: Integer -> Integer
+> factorial' 0 = 1 -- base case, it must be defined first of the recursive case
+> factorial' n = n * factorial (n - 1) -- recursive case
+
+
+Anonymous variables can be used when we don't care about the parameter, like in the following example:
+
+> nand :: Bool -> Bool -> Bool
+> nand _ _ = False -- we don't care about the parameters, so we use an anonymous variable (_)
