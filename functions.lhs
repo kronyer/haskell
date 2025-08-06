@@ -1,3 +1,4 @@
+import Control.Monad (guard)
 <h1>FunctionalDependencies</h1>
 
 in haskell functions are pure, because they only return results calculated relative to their parameters.Applicative
@@ -58,4 +59,36 @@ We can use patterns in the recursive factorial example to make it more readable 
 Anonymous variables can be used when we don't care about the parameter, like in the following example:
 
 > nand :: Bool -> Bool -> Bool
-> nand _ _ = False -- we don't care about the parameters, so we use an anonymous variable (_)
+> nand _ _ = False -- we don't care about the parameters, so we use an anonymous variable (_), also _ has no relation with the other _
+
+
+Guards - are defined by | and is like a if statement, but more readable and concise. we must have an equal
+
+> valAbs :: Int -> Int
+> valAbs n 
+>   | n >= 0     = n
+>   | otherwise = negate n
+
+
+Local definitions used in let-in expressions
+The local defiitions just existe in the in expression "block"
+
+> fastExp :: Int -> Int -> Int
+> fastExp _ 0 = 1 -- base case
+> fastExp x n =
+>   let y = fastExp x n_halved
+>       n_halved = div n 2
+>   in
+>      if even n
+>      then y * y
+>      else x * y * y
+
+With guard
+
+> fastExp' :: Int -> Int -> Int
+> fastExp' _ 0 = 1
+> fastExp' x n 
+>    |  even n = y * y
+>    |  otherwise = x * y * y
+>      where y = fastExp x n_halved
+>            n_halved = div n 2
