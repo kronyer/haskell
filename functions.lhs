@@ -92,3 +92,5 @@ With guard
 >    |  otherwise = x * y * y
 >      where y = fastExp x n_halved
 >            n_halved = div n 2
+
+
