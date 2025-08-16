@@ -77,3 +77,17 @@ firstAndSecond list =
     --O let first:second:rest = list desempacota a lista em três partes
     let first:second:rest = list
     in (first, second)
+
+
+-- Strings are a list of Char
+
+name1 :: [Char]
+name1 = 'j' : 'o' : 'h' : 'n' : []
+
+name2 :: String
+name2 = "john"
+
+
+-- The comparison is alphabetical
+-- so "az" > "aaz" because 'z' > 'a'
+-- and "a" < "b" because 'a' < 'b'
